@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>patientdata JSF</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Beschriftung</th>
+                            <th>Feld</th>
+                        </tr>
+                    </thead>
+                
+                    <tr><td>FirstName: </td><td><h:outputText value="#{patient.vorname}" /></td></tr>
+                    <tr><td>LastName: </td><td><h:outputText value="#{patient.nachname}" /></td></tr>
+                    <tr><td>email: </td><td><h:outputText value="#{patient.email}" /></td></tr>
+                    <tr><td>svn: </td><td><h:outputText value="#{patient.svn}" /></td></tr>
+                    <tr><td>dateOfBirth: </td><td><h:outputText value="#{patient.geburtsdatum}" /></td></tr>
+                    <tr><td>gender: </td><td><h:outputText value="#{patient.geschlecht}" /></td></tr>
+                    <tr><td>bloodPressureDia: </td><td><h:outputText value="#{patient.diastolisch}" /></td></tr>
+                    <tr><td>bloodPressureSys: </td><td><h:outputText value="#{patient.systolisch}" /></td></tr>
+                    <tr><td>pulse: </td><td><h:outputText value="#{patient.puls}" /></td></tr>
+                    <tr><td>notes: </td><td><h:outputText value="#{patient.anmerkungen}" /></td></tr>
+                     
+                </table>
+                </ui:define>
+            </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>newpatient via JSF</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <h:form >
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Beschriftung</th>
+                                <th>Feld</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><label for="firstName">Vorname:</label></td>
+                                <td>
+                                    <h:inputText id="firstName" value="#{patient.vorname}">
+                                        <f:validateLength minimum="3"></f:validateLength>
+                                    </h:inputText>*
+                                    <h:message class="errors" for="firstName"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="lastName">Nachname:</label></td>
+                                <td>
+                                    <h:inputText id="lastName" value="#{patient.nachname}">
+                                        <f:validateLength minimum="3"></f:validateLength>
+                                    </h:inputText>*
+                                    <h:message class="errors" for="lastName"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">E-Mail:</label></td>
+                                <td>
+                                    <h:inputText id="email" value="#{patient.email}" class="form-control">
+                                        <f:validateRegex pattern=".+\@.+\..+"></f:validateRegex>
+                                    </h:inputText>*
+                                    <h:message class="errors" for="email"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="svn">SVN:</label></td>
+                                <td>
+                                    <h:inputText id="svn" value="#{patient.svn}">
+                                    </h:inputText>*
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="dateOfBirth">Geburtsdatum:</label></td>
+                                <td>
+                                    <h:inputText id="dateOfBirth" class="form-control" value="#{patient.geburtsdatum}">
+                                        <!--how to validate date of birth? mind 18 Jahre<f:-->
+                                    </h:inputText>*
+                                    <h:message class="errors" for="dateOfBirth"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Geschlecht:</label></td>
+                                <td>
+                                    <h:selectOneRadio>
+                                        <f:selectItem itemValue="m" itemLabel=" m" />
+                                        <f:selectItem itemValue="w" itemLabel=" w" />
+                                        <f:selectItem itemValue="keine Angabe" itemLabel=" keine Angabe" />
+                                    </h:selectOneRadio>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="bloodPressureDia">Blutdruck Diastolisch:</label></td>
+                                <td>
+                                    <h:inputText id="bloodPressureDia" value="#{patient.diastolisch}">
+                                        <f:validateLongRange minimum="#{patient.diaMin}" maximum="#{patient.diaMax}"/>
+                                    </h:inputText>*
+                                    <h:message class="errors" for="bloodPressureDia"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="bloodPressureSys">Blutdruck Systolisch:</label></td>
+                                <td>
+                                    <h:inputText id="bloodPressureSys" value="#{patient.systolisch}">
+                                        <f:validateLongRange minimum="#{patient.sysMin}" maximum="#{patient.sysMax}"/>
+                                    </h:inputText>*
+                                    <h:message class="errors" for="bloodPressureSys"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="pulse">Puls:</label></td>
+                                <td>
+                                    <h:inputText id="pulse" value="#{patient.puls}">
+                                    </h:inputText>*
+                                    <h:message class="errors" for="pulse"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="notes">Anmerkungen:</label></td>
+                                <td>
+                                    <h:inputTextarea id="notes" class="form-control" rows="3" ></h:inputTextarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="reset" class="btn btn-default">Abbrechen</button>
+                                </td>
+                                <td>
+                                    <h:commandButton class="btn btn-default" type="submit" value="Abschicken" action="#{patient.submit}"  />
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </h:form>
+                </ui:define>
+            </ui:composition>
+    </h:body>
+</html>
+

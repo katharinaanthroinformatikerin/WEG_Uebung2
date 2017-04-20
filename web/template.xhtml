@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <div class="container" id="container">
+            <header id="header">
+                <h1>Patientenverwaltung</h1>
+            </header>
+            <nav id="nav">
+                <ul class="nav nav-pills" id="list">
+                    
+                    <c:choose>
+                        <c:when test="${request.requestURI.endsWith('index.xhtml')}">
+                            <li role="presentation" class="active">
+                                <a href="./index.xhtml">Home</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li role="presentation"><a href="index.xhtml" id="homeLink">Home</a></li>
+                        </c:otherwise>
+                     </c:choose>
+                    
+                    <c:choose>
+                        <c:when test="${request.requestURI.endsWith('newpatient.xhtml')}">
+                            <li  role="presentation" class="active">
+                                <a href="./newpatient.xhtml">Neuen Patienten anlegen</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li role="presentation"><a href="newpatient.xhtml">Neuen Patienten anlegen</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                    
+                    <c:choose>
+                        <c:when test="${request.requestURI.endsWith('patientdata.xhtml')}">
+                            <li  role="presentation" class="active">
+                                <a href="./patientdata.xhtml">Patientendaten abrufen</a>
+                            </li>
+                       </c:when>
+                        <c:otherwise>
+                            <li role="presentation"><a href="patientdata.xhtml">Patientendaten abrufen</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                    
+                        <li role="presentation" id="listElement4"><a href="mailto:patientenverwaltung@technikum.at" id="contact">Kontakt</a></li>
+    
+                </ul>
+            </nav>
+          
+            <main id="mainArea">
+                <div class="col-md-4" id="leftSection">
+                    <div id="welcome_logo_container">
+                        <div class="welcome_text" id="welcomeText"><h4>Willkommen im Krankenhausinformationssystem</h4></div>
+                        <h:graphicImage library="images" name="logo.png" id="graphicImage"/>
+                    </div>
+                </div>
+                <div class="col-md-8" id="rightSection">
+                    <div id="formContainerRight">
+                        <ui:insert name="content">Right Section</ui:insert>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </h:body>
+</html>
+
